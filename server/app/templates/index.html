@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <p><b>welcome to factory 227</b></p>
+    <p>see who's staying with us & when</p>
+    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&showDate=1&showPrint=0&showCalendars=1&mode=MONTH&src=MmI1YWZmNzg3OGQ2MzIzZDVhOTc5ZTg5NGFmYWExNGMyNTZkODVmYTViMWY4OWYwMGExNzIyYmI4MmU4ZjBlOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23A79B8E" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    <p>upcoming stays:</p>
+    <ul>
+        {% for event in events %}
+            <li>{{ event.summary }} - {{ event.start_time }} to {{ event.end_time }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
