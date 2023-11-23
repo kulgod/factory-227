@@ -33,4 +33,12 @@ def get_calendar_events():
     calendar_id = current_app.config["CALENDAR_ID"]
 
     events = calendar_service.events().list(calendarId=calendar_id).execute()
-    return jsonify(events.get('items', []))
+    event_data = []
+    for event in events.get('items', []):
+        event_data.append({
+            'summary': event['summary'],
+            'start_time': event['start'].get('dateTime', event['start'].get('date')),
+            'end_time': event['end'].get('dateTime', event['end'].get('date'))
+        })
+
+    return jsonify(event_data)

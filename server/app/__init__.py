@@ -1,11 +1,13 @@
 from flask import Flask
+from flask_cors import CORS
 from config import Config
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
 def create_app():
     app = Flask(__name__)
-
+    CORS(app)
+    
     # Configurations
     app.config.from_object(Config())
 
